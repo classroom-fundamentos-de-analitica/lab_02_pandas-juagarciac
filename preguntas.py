@@ -178,7 +178,6 @@ def pregunta_10():
     """
     tbl01=tbl0.copy()
     concatenados = tbl01.groupby('_c1')['_c2'].apply(lambda x: ':'.join(sorted(x.astype(str))))
-    concatenados = concatenados.reset_index().rename(columns={'index': 'nuevo_indice'})
     return concatenados
 
 
@@ -221,6 +220,7 @@ def pregunta_12():
     """
     concantenador = tbl2.groupby('_c0').apply(lambda x: ','.join(sorted([f"{a}:{b}" for a, b in zip(x['_c5a'], x['_c5b'])])))
     concantenador = concantenador.reset_index().rename(columns={'index': 'nuevo_indice'})
+    concantenador = concantenador.rename(columns={0: '_c5'})
     return concantenador
 
 
