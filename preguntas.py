@@ -176,9 +176,25 @@ def pregunta_10():
     3   D                  1:2:3:5:5:7
     4   E  1:1:2:3:3:4:5:5:5:6:7:8:8:9
     """
-    tbl01=tbl0.copy()
-    concatenados = tbl01.groupby('_c1')['_c2'].apply(lambda x: ':'.join(sorted(x.astype(str))))
+    concatenados = tbl0.groupby('_c1')['_c2'].apply(lambda x: ':'.join(sorted(x.astype(str))))
+    concatenados = concatenados.reset_index().set_index('_c1')
     return concatenados
+
+"""fuxy =  pd.DataFrame(
+            {
+                "_c2": [
+                    "1:1:2:3:6:7:8:9",
+                    "1:3:4:5:6:8:9",
+                    "0:5:6:7:9",
+                    "1:2:3:5:5:7",
+                    "1:1:2:3:3:4:5:5:5:6:7:8:8:9",
+                ]
+            },
+            index=pd.Series(["A", "B", "C", "D", "E"], name="_c1"),
+        )
+print(fuxy)
+print(fuxy.columns.tolist())
+print(pregunta_10().columns.tolist())"""
 
 
 def pregunta_11():
